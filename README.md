@@ -4,7 +4,7 @@ http://www.impressionsfromtheheart.com/
 
 It is a work in progress site.
 Future plans:
--Small Updates
+ * Small Updates
  - update images
  - body texts
  - visuals
