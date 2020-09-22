@@ -1,0 +1,472 @@
+[
+    {
+        "name": "lettuce",
+        "price": 20.353784649925366,
+        "product": "bracelet"
+    },
+    {
+        "name": "apples",
+        "price": 56.15216740382293,
+        "product": "necklace"
+    },
+    {
+        "name": "oranges",
+        "price": 5.3334759038745965,
+        "product": "bracelet"
+    },
+    {
+        "name": "peaches",
+        "price": 8.180876109117797,
+        "product": "bracelet"
+    },
+    {
+        "name": "pears",
+        "price": 76.9634413111462,
+        "product": "necklace"
+    },
+    {
+        "name": "prunes",
+        "price": 98.5485786818448,
+        "product": "keychain"
+    },
+    {
+        "name": "plums",
+        "price": 18.882021700669238,
+        "product": "necklace"
+    },
+    {
+        "name": "strawberries",
+        "price": 69.81229416302034,
+        "product": "bracelet"
+    },
+    {
+        "name": "raisins",
+        "price": 82.94984249821832,
+        "product": "bracelet"
+    },
+    {
+        "name": "kiwi",
+        "price": 12.936266319262145,
+        "product": "necklace"
+    },
+    {
+        "name": "pineapple",
+        "price": 26.188812376661208,
+        "product": "bracelet"
+    },
+    {
+        "name": "bananas",
+        "price": 34.52356587851021,
+        "product": "necklace"
+    },
+    {
+        "name": "cauliflower",
+        "price": 87.2481984996039,
+        "product": "necklace"
+    },
+    {
+        "name": "broccoli",
+        "price": 43.63611844962934,
+        "product": "bracelet"
+    },
+    {
+        "name": "carrots",
+        "price": 75.85835524730456,
+        "product": "bracelet"
+    },
+    {
+        "name": "garlic,",
+        "price": 64.79745477922026,
+        "product": "keychain"
+    },
+    {
+        "name": "celery",
+        "price": 63.04210823066536,
+        "product": "bracelet"
+    },
+    {
+        "name": "green peppers",
+        "price": 22.013333144792234,
+        "product": "bracelet"
+    },
+    {
+        "name": "corn",
+        "price": 52.51329672400619,
+        "product": "bracelet"
+    },
+    {
+        "name": "tomatoes",
+        "price": 54.303225982386316,
+        "product": "keychain"
+    },
+    {
+        "name": "mushrooms",
+        "price": 99.17135374331474,
+        "product": "bracelet"
+    },
+    {
+        "name": "canned vegetables",
+        "price": 49.74797432435246,
+        "product": "bracelet"
+    },
+    {
+        "name": "hamburger",
+        "price": 47.6026128875349,
+        "product": "bracelet"
+    },
+    {
+        "name": "chicken",
+        "price": 51.213362403021456,
+        "product": "bracelet"
+    },
+    {
+        "name": "fresh fish",
+        "price": 94.09652684853937,
+        "product": "bracelet"
+    },
+    {
+        "name": "pork chops",
+        "price": 62.65563918957262,
+        "product": "bracelet"
+    },
+    {
+        "name": "pork and beans",
+        "price": 62.63860721063905,
+        "product": "keychain"
+    },
+    {
+        "name": "meat balls",
+        "price": 18.68724540032747,
+        "product": "bracelet"
+    },
+    {
+        "name": "lunch meat",
+        "price": 45.29423772869786,
+        "product": "bracelet"
+    },
+    {
+        "name": "wieners",
+        "price": 37.827148764769866,
+        "product": "bracelet"
+    },
+    {
+        "name": "wiener buns",
+        "price": 86.17207488989207,
+        "product": "necklace"
+    },
+    {
+        "name": "eggs",
+        "price": 13.080584092830083,
+        "product": "necklace"
+    },
+    {
+        "name": "bread",
+        "price": 37.86589736435673,
+        "product": "keychain"
+    },
+    {
+        "name": "butter",
+        "price": 53.67687036879795,
+        "product": "necklace"
+    },
+    {
+        "name": "jelly",
+        "price": 66.30872159178904,
+        "product": "necklace"
+    },
+    {
+        "name": "cheese",
+        "price": 52.90753088138005,
+        "product": "bracelet"
+    },
+    {
+        "name": "potatoes",
+        "price": 41.275944425546875,
+        "product": "keychain"
+    },
+    {
+        "name": "pasta",
+        "price": 42.84750516214114,
+        "product": "keychain"
+    },
+    {
+        "name": "ketchup",
+        "price": 99.63541840728402,
+        "product": "necklace"
+    },
+    {
+        "name": "yogurt",
+        "price": 29.226472363211386,
+        "product": "keychain"
+    },
+    {
+        "name": "cottage cheese",
+        "price": 24.931733393033472,
+        "product": "bracelet"
+    },
+    {
+        "name": "cereal",
+        "price": 49.27079696979426,
+        "product": "bracelet"
+    },
+    {
+        "name": "milk",
+        "price": 76.41294973869897,
+        "product": "necklace"
+    },
+    {
+        "name": "orange juice",
+        "price": 10.694024267350388,
+        "product": "necklace"
+    },
+    {
+        "name": "apple",
+        "price": 11.626890751839936,
+        "product": "bracelet"
+    },
+    {
+        "name": "juice",
+        "price": 37.63110929292045,
+        "product": "bracelet"
+    },
+    {
+        "name": "prune juice",
+        "price": 56.66883989972759,
+        "product": "keychain"
+    },
+    {
+        "name": "ice cream",
+        "price": 5.980182686928936,
+        "product": "necklace"
+    },
+    {
+        "name": "soda",
+        "price": 60.944063231645586,
+        "product": "bracelet"
+    },
+    {
+        "name": "soup",
+        "price": 66.38564441015656,
+        "product": "necklace"
+    },
+    {
+        "name": "macaroni and cheese",
+        "price": 18.857475393569377,
+        "product": "necklace"
+    },
+    {
+        "name": "oatmeal",
+        "price": 74.78520264083375,
+        "product": "bracelet"
+    },
+    {
+        "name": "chocolate milk",
+        "price": 29.1924660365396,
+        "product": "keychain"
+    },
+    {
+        "name": "mayonnaise",
+        "price": 5.917004209845967,
+        "product": "bracelet"
+    },
+    {
+        "name": "mustard",
+        "price": 34.876391409928054,
+        "product": "necklace"
+    },
+    {
+        "name": "rice",
+        "price": 18.683355811981052,
+        "product": "bracelet"
+    },
+    {
+        "name": "laundry soap",
+        "price": 36.61231437231174,
+        "product": "keychain"
+    },
+    {
+        "name": "dish soup",
+        "price": 33.819982986480326,
+        "product": "necklace"
+    },
+    {
+        "name": "dishwasher soap. tissue",
+        "price": 57.29044716282513,
+        "product": "necklace"
+    },
+    {
+        "name": "toilet paper",
+        "price": 52.17991506318007,
+        "product": "keychain"
+    },
+    {
+        "name": "paper towels",
+        "price": 56.83161388581054,
+        "product": "bracelet"
+    },
+    {
+        "name": "beer",
+        "price": 89.58126557113113,
+        "product": "necklace"
+    },
+    {
+        "name": "cigarettes",
+        "price": 11.252003175514936,
+        "product": "bracelet"
+    },
+    {
+        "name": "crackers",
+        "price": 27.674714293321635,
+        "product": "necklace"
+    },
+    {
+        "name": "chocolate chips",
+        "price": 8.02002170707482,
+        "product": "necklace"
+    },
+    {
+        "name": "hot chocolate mix",
+        "price": 84.23909753256953,
+        "product": "necklace"
+    },
+    {
+        "name": "coffee",
+        "price": 64.75546804700642,
+        "product": "keychain"
+    },
+    {
+        "name": "tea",
+        "price": 92.06313920968783,
+        "product": "bracelet"
+    },
+    {
+        "name": "cooking oil",
+        "price": 92.28172090603908,
+        "product": "bracelet"
+    },
+    {
+        "name": "vinegar",
+        "price": 77.33471347282345,
+        "product": "bracelet"
+    },
+    {
+        "name": "sugar",
+        "price": 38.37296646007,
+        "product": "bracelet"
+    },
+    {
+        "name": "salt",
+        "price": 39.501072081757926,
+        "product": "bracelet"
+    },
+    {
+        "name": "pepper",
+        "price": 59.1016733584891,
+        "product": "keychain"
+    },
+    {
+        "name": "onions",
+        "price": 86.71760839682896,
+        "product": "bracelet"
+    },
+    {
+        "name": "cinnamon",
+        "price": 21.715851476989656,
+        "product": "bracelet"
+    },
+    {
+        "name": "ginger",
+        "price": 75.06759019305191,
+        "product": "bracelet"
+    },
+    {
+        "name": "onion salt",
+        "price": 1.3745862701857403,
+        "product": "keychain"
+    },
+    {
+        "name": "garlic powder",
+        "price": 67.71667762903432,
+        "product": "bracelet"
+    },
+    {
+        "name": "bakery foods",
+        "price": 51.142853136910915,
+        "product": "necklace"
+    },
+    {
+        "name": "baking soda",
+        "price": 46.563110897820145,
+        "product": "bracelet"
+    },
+    {
+        "name": "flour",
+        "price": 81.83959373741521,
+        "product": "necklace"
+    },
+    {
+        "name": "vanilla",
+        "price": 83.79611505117231,
+        "product": "bracelet"
+    },
+    {
+        "name": "cake mixes",
+        "price": 91.67033634199635,
+        "product": "keychain"
+    },
+    {
+        "name": "noodles",
+        "price": 69.32911146185319,
+        "product": "necklace"
+    },
+    {
+        "name": "spaghetti",
+        "price": 88.14635270969325,
+        "product": "bracelet"
+    },
+    {
+        "name": "potato chips",
+        "price": 84.40494961099603,
+        "product": "bracelet"
+    },
+    {
+        "name": "diapers. sponges",
+        "price": 58.515476901973074,
+        "product": "necklace"
+    },
+    {
+        "name": "baby formula",
+        "price": 88.65638955563219,
+        "product": "keychain"
+    },
+    {
+        "name": "strained baby food",
+        "price": 7.288357466655738,
+        "product": "bracelet"
+    },
+    {
+        "name": "baby lotion",
+        "price": 22.765444155389,
+        "product": "keychain"
+    },
+    {
+        "name": "hand lotion",
+        "price": 38.60077351694895,
+        "product": "necklace"
+    },
+    {
+        "name": "batteries",
+        "price": 13.399818916440676,
+        "product": "necklace"
+    },
+    {
+        "name": "newspaper",
+        "price": 91.70509583783397,
+        "product": "keychain"
+    },
+    {
+        "name": "magazines",
+        "price": 52.475204421961585,
+        "product": "bracelet"
+    }
+]
