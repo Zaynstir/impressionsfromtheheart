@@ -94,13 +94,13 @@ const WPW = () => {
                         </div>
                     </div>
                     <div className="caption text-center d-flex justify-content-center">
-                        <div className="card pl-4 pr-4 pb-4 pt-4" style={{ "color": "black", width: "75%", border: "2px solid black", 'text-transform': 'none' }}>
+                        <div className="card pl-4 pr-4 pb-4 pt-4" style={{ "color": "black", width: "75%", border: "2px solid black", 'textTransform': 'none' }}>
                             <h2>Wolff-Parkinson-White Syndrome</h2>
                             <hr />
-                            <p style={{ "font-size": "25px" }}>
+                            <p style={{ "fontSize": "25px" }}>
                                 Mayoclinic defines Wolff-Parkinson-White Syndrome as, “In Wolff-Parkinson-White (WPW) syndrome, an extra electrical pathway between your heart's upper and lower chambers causes a rapid heartbeat. The condition, which is present at birth, is fairly rare.”
                             </p>
-                            <p style={{ "font-size": "10px" }}>
+                            <p style={{ "fontSize": "10px" }}>
                                 Bibliography: Wolff-Parkinson-White (WPW) syndrome - Symptoms and causes
                                 "Wolff-Parkinson-White (WPW) Syndrome - Symptoms And Causes". Mayo Clinic, 2020, <a href="https://www.mayoclinic.org/diseases-conditions/wolff-parkinson-white-syndrome/symptoms-causes/syc-20354626">https://www.mayoclinic.org/diseases-conditions/wolff-parkinson-white-syndrome/symptoms-causes/syc-20354626</a>. Accessed 27 July 2020.
                             </p>
@@ -122,7 +122,7 @@ const WPW = () => {
                             </div>
                             <div className="row">
                                 <div className="col-sm-12">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/JIRWLObizfQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/JIRWLObizfQ" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>
 
@@ -150,13 +150,13 @@ const WPW = () => {
                         </div>
                         <div className="form-group row">
                             <label for="name" className="col-sm-6 col-form-label d-flex justify-content-center">Name: </label>
-                            <div class="col-sm-6">
+                            <div className="col-sm-6">
                                 <input type="text" id="name" className="form-control" value={name} onChange={(e) => { setName(e.target.value) }} />
                             </div>
                         </div>
                         <div className="form-group row">
                             <label for="email" className="col-sm-6 col-form-label d-flex justify-content-center">Email: </label>
-                            <div class="col-sm-6">
+                            <div className="col-sm-6">
                                 <input type="text" id="email" className="form-control" value={email} onChange={(e) => { setEmail(e.target.value) }} />
                             </div>
                         </div>
@@ -183,13 +183,13 @@ const WPW = () => {
                                 </div>
                                 <div className="form-group row">
                                     <label for="name2" className="col-sm-6 col-form-label d-flex justify-content-center">Name: </label>
-                                    <div class="col-sm-6">
+                                    <div className="col-sm-6">
                                         <input type="text" id="name2" className="form-control" value={name2} onChange={(e) => { setName2(e.target.value) }} />
                                     </div>
                                 </div>
                                 <div className="form-group row">
                                     <label for="email2" className="col-sm-6 col-form-label d-flex justify-content-center">Email: </label>
-                                    <div class="col-sm-6">
+                                    <div className="col-sm-6">
                                         <input type="text" id="email2" className="form-control" value={email2} onChange={(e) => { setEmail2(e.target.value) }} />
                                     </div>
                                 </div>

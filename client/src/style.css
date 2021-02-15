@@ -237,6 +237,7 @@ hr.socket{
 }
 .cart-icon:hover{
   border-color: rgba(0,0,0,.125);
+  background-color: rgba(0,0,0,.125);
 }
 .store-title {
   float:left;
@@ -251,6 +252,8 @@ hr.socket{
 .card-store:hover {
   border-width: 1px;
   border-color: rgba(0,0,0,1);
+  background-color: rgba(0,0,0,.125);
+  color: black;
 }
 .card-item {
     width: 50rem;

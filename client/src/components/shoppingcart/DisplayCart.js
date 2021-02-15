@@ -12,10 +12,10 @@ const DisplayCart = () => {
         <div>
             {
                 cart.map((item, idx) => (
+
                     <CartItem key={idx} idx={idx} item={item} />
                 ))
             }
-            <button onClick={(e) => { window.location.replace("#/Checkout") }}>Proceed To Checkout</button>
         </div>
     );
 }

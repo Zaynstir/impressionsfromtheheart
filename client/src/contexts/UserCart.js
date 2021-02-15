@@ -11,7 +11,8 @@ const UserCartProvider = props => {
             details: {
                 quantity: 1,
                 customText: "test",
-                shipAddress: "addr"
+                shipAddress: "addr",
+                price: 10
             }
         }
     ])

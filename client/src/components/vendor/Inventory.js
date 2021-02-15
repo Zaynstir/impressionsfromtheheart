@@ -39,7 +39,7 @@ const Inventory = () => {
         <div>
             <div className="row">
                 {
-                    Object.keys(inventory) == 0 ? <div>Data Loading...</div> : displayData()
+                    Object.keys(inventory) == 0 ? <div className="col d-flex justify-content-center"><h1>Data Loading...</h1></div> : displayData()
                 }
             </div>
         </div>

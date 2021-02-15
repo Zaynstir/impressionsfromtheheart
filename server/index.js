@@ -94,13 +94,14 @@ app.post('/store/insertOrder', (req, res) => {
     pool.query("insert into public.orders (name, email, items, phone) VALUES ($1, $2, $3, $4) returning orderid", dataRay)
         .then(response => {
             newID = response.rows[0]['orderid'];
+            res.send({ newID: newID });
         })
         .catch(err => {
             console.error(err);
+            res.send({ newID: newID })
         })
 
 
-    res.send({ newID: newID })
 })
 
 app.post('/wpw/insertRequest', (req, res) => {
@@ -115,7 +116,7 @@ app.post('/wpw/insertRequest', (req, res) => {
 app.post('/wpw/insertDonation', (req, res) => {
     let data = req.body;
     let flag = -1;
-    pool.query("insert into public.wpwdonations (name, email) VALUES ($1, $2)", [data.name, data.email])
+    pool.query("insert into public.wpwrequests (name, email) VALUES ($1, $2)", [data.name, data.email])
         .then(response => { flag = 1; })
         .catch(err => console.error(err));
     res.send({ flag: flag });
