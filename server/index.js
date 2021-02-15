@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
+const bodyParser = require("body-parser")
 const { Client, Pool } = require('pg');
 
 const app = express();
@@ -26,8 +27,8 @@ const pool = new Pool({
 })
 
 //Body Parser
-//app.use(express.json());
-//app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     let ray = { col1: "val1", col2: "val2" }
@@ -80,14 +81,44 @@ app.get('/store/inventory/:itemid', (req, res) => {
 })
 
 app.post('/store/insertOrder', (req, res) => {
+    //console.log(JSON.parse(req.body))
+    let data = req.body;
+    console.log(data.userDetails.name);
+    let dataRay = [
+        data.userDetails.name,
+        data.userDetails.email,
+        JSON.stringify(data.userCart),
+        data.userDetails.phone
+    ];
+    let newID = -1;
+    pool.query("insert into public.orders (name, email, items, phone) VALUES ($1, $2, $3, $4) returning orderid", dataRay)
+        .then(response => {
+            newID = response.rows[0]['orderid'];
+        })
+        .catch(err => {
+            console.error(err);
+        })
 
+
+    res.send({ newID: newID })
 })
 
 app.post('/wpw/insertRequest', (req, res) => {
-
+    let data = req.body;
+    let flag = -1;
+    pool.query("insert into public.wpwdonations (name, email) VALUES ($1, $2)", [data.name, data.email])
+        .then(response => { flag = 1; })
+        .catch(err => console.error(err));
+    res.send({ flag: flag });
 })
 
 app.post('/wpw/insertDonation', (req, res) => {
+    let data = req.body;
+    let flag = -1;
+    pool.query("insert into public.wpwdonations (name, email) VALUES ($1, $2)", [data.name, data.email])
+        .then(response => { flag = 1; })
+        .catch(err => console.error(err));
+    res.send({ flag: flag });
 
 })
 

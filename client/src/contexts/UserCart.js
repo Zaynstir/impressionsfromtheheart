@@ -5,10 +5,14 @@ const UserCartProvider = props => {
 
     const [cart, setCart] = useState([
         {
-            name: "bracelet",
-            quantity: 1,
-            customText: "test",
-            shipAddress: "addr"
+            name: "Bracelet",
+            id: 1,
+            baseprice: 10,
+            details: {
+                quantity: 1,
+                customText: "test",
+                shipAddress: "addr"
+            }
         }
     ])
 
@@ -26,12 +30,7 @@ const UserCartProvider = props => {
 
     const updateItemInCart = (index, item) => {
         let a = [...cart];
-        a[index] = {
-            name: item.name,
-            quantity: item.quantity,
-            customText: item.customText,
-            shipAddress: item.shipAddress
-        }
+        a[index] = { ...item }
         setCart(a);
     }
 

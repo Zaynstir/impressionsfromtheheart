@@ -17,10 +17,19 @@ const Inventory = () => {
             return <div>Error Loading Data. Server is possibly down.</div>;
         }
         let output = [];
+        let colSize = 4;
+        /*if (Object.keys(inventory.children).length % 3 == 0 || (Object.keys(inventory.children).length % 3 <= Object.keys(inventory.children).length % 4)) {
+            colSize = 4;
+        }
+        else if (Object.keys(inventory.children).length % 4 == 0 || (Object.keys(inventory.children).length % 4 < Object.keys(inventory.children).length % 3)) {
+            colSize = 3;
+        }*/
         Object.keys(inventory.children).forEach((value, index) => {
 
             output.push(
-                <Item key={inventory.children[value].id} details={inventory.children[value]} />
+                <div key={inventory.children[value].id} className={"col-lg-" + colSize}>
+                    <Item details={inventory.children[value]} />
+                </div>
             )
         })
         return output;
@@ -28,9 +37,11 @@ const Inventory = () => {
 
     return (
         <div>
-            {
-                Object.keys(inventory) == 0 ? <div>Data Loading...</div> : displayData()
-            }
+            <div className="row">
+                {
+                    Object.keys(inventory) == 0 ? <div>Data Loading...</div> : displayData()
+                }
+            </div>
         </div>
     );
 }

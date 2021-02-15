@@ -6,6 +6,11 @@ import { UserCart } from '../../contexts/UserCart';
 const ItemDetails = ({ match }) => {
 
     const [item, setItem] = useState({});
+    const [details, setDetails] = useState({
+        quantity: 0,
+        customText: "",
+        shipAddress: ""
+    });
 
     const { addToCart } = useContext(UserCart);
 
@@ -17,7 +22,9 @@ const ItemDetails = ({ match }) => {
     }, [])
 
     const validate = () => {
-        //addToCart(item.children)
+        let itemObj = item.children[Object.keys(item.children)[0]];
+        itemObj['details'] = details;
+        addToCart(itemObj);
         window.location.replace("#/cart");
     }
 
@@ -29,7 +36,7 @@ const ItemDetails = ({ match }) => {
     }
 
     return (
-        <div>
+        <div className="offset">
             {
                 Object.keys(item) == 0 ? (
                     <div>Data Loading...</div>
@@ -38,7 +45,9 @@ const ItemDetails = ({ match }) => {
                             <h1>{item.children[Object.keys(item.children)[0]].name}</h1>
                             <h2>{item.children[Object.keys(item.children)[0]].baseprice}</h2>
                             <hr />
-
+                            Quantity: <input type="text" id="quantity"></input>
+                            Custom Text: <input type="text" id="customText"></input>
+                            Shipping Address: <input type="text" id="shipAddress"></input>
                             <button onClick={validate}>thing</button>
                         </div>
                     )

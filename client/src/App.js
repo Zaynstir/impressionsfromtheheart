@@ -14,6 +14,9 @@ import EditItem from './components/shoppingcart/EditItem';
 import Checkout from './components/shoppingcart/Checkout';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import WPW from './pages/WPW';
+import AboutUs from './pages/About-Us';
+import ContactUs from './pages/Contact-Us';
 
 
 function App() {
@@ -27,6 +30,9 @@ function App() {
             <UserCartProvider>
               <Switch>
                 <Route path="/" exact component={Home} />
+                <Route path="/wpw" exact component={WPW} />
+                <Route path="/about-us" exact component={AboutUs} />
+                <Route path="/contact-us" exact component={ContactUs} />
                 <Route path="/store" exact component={Store} />
                 <Route path="/store/item/:id" component={ItemDetails} />
                 <Route path="/cart" exact component={Cart} />

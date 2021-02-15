@@ -10,13 +10,12 @@ const DisplayCart = () => {
 
     return (
         <div>
-            <h1>Display Cart</h1>
             {
                 cart.map((item, idx) => (
-                    <CartItem idx={idx} />
+                    <CartItem key={idx} idx={idx} item={item} />
                 ))
             }
-            <button onClick={(e) => { window.location.replace("#/Checkout") }}>Checkout</button>
+            <button onClick={(e) => { window.location.replace("#/Checkout") }}>Proceed To Checkout</button>
         </div>
     );
 }
