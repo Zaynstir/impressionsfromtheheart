@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ContactUs = () => {
 
@@ -6,10 +6,13 @@ const ContactUs = () => {
     const [email, setEmail] = useState("");
     const [comment, setComment] = useState("");
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     return (
         <div>
-            <div className="offset">
+            <div className="">
                 <div id="Landing">
                     <div className="landing">
                         <div className="home-wrap">

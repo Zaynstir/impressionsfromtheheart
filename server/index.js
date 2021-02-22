@@ -30,6 +30,35 @@ const pool = new Pool({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/admin', (req, res) => {
+    //login to view of customer data
+    // - orders, wpwrequests, wpwdonations
+});
+
+app.get('/admin/orders', (req, res) => {
+
+})
+
+app.get('/admin/wpwrequests', (req, res) => {
+
+})
+
+app.get('/admin/wpwdonations', (req, res) => {
+
+})
+
+app.get('/admin/orders/data', (req, res) => {
+
+})
+
+app.get('/admin/wpwrequests/data', (req, res) => {
+
+})
+
+app.get('/admin/wpwdonations/data', (req, res) => {
+
+})
+
 app.get('/', (req, res) => {
     let ray = { col1: "val1", col2: "val2" }
     res.json(ray);

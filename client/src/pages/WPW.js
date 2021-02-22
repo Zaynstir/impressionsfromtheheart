@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import $ from 'jquery'
 
 const WPW = () => {
@@ -7,6 +7,37 @@ const WPW = () => {
     const [email, setEmail] = useState('');
     const [name2, setName2] = useState('');
     const [email2, setEmail2] = useState('');
+
+    useEffect(() => {
+        //window.scrollTo(0, 500);
+        //console.log(window.pageYOffset)
+
+        let initStr = window.location.hash;
+        let newStr = initStr.substring(2);
+        let idx = newStr.indexOf("#");
+        if (idx === -1) {
+            window.scrollTo(0, 0);
+        }
+        else {
+            let scrollTo = newStr.substring(idx + 1);
+            let pxidx = getComputedStyle(document.querySelector('.navbar')).height.indexOf('p');
+            let number = parseFloat(getComputedStyle(document.querySelector('.navbar')).height.substring(0, pxidx));
+            switch (scrollTo) {
+                case "course":
+                    window.scroll(0, (document.getElementById('course').offsetTop - number));
+                    break;
+                case "features":
+                    window.scroll(0, (document.getElementById("features").offsetTop - number));
+                    break;
+                case "resources":
+                    window.scroll(0, (document.getElementById("resources").offsetTop - number));
+                    break;
+                default:
+                    window.scrollTo(0, 0);
+                    break;
+            }
+        }
+    }, [])
 
     const sendInfo = action => {
         let n = "";
@@ -107,101 +138,101 @@ const WPW = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="resources" className="offset">
+                <div id="resources" className="">
 
-                <div className="jumbotron">
-                    <div className="narrow text-center">
-                        <div className="col-12">
-                            <h1>Resources</h1>
-                            <hr />
-                            <div className="row">
-                                <div className="col-sm-12">
-                                    <h4>Instructional Video</h4>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-sm-12">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/JIRWLObizfQ" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col-sm-12">
-                                    <p>Search for cardiac electroncologist: <a href="https://www.hrsonline.org/find-a-specialist">https://www.hrsonline.org/find-a-specialist</a></p>
-                                    <p>WPW Facebook Page: <a href="https://www.facebook.com/groups/place4comfortwpw/">https://www.facebook.com/groups/place4comfortwpw/</a></p>
-                                    <p>For free heart checks, check local hospitals or <a href="https://www.anthonybates.org/">https://www.anthonybates.org/</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="course" className="offset pb-5">
-                <div className="col-12 narrow text-center">
-                    <h1>Do you need a Heart Monitor</h1>
-                    <div className="card p-4" style={{ border: "0px" }}>
-                        <div className="row d-flex justify-content-center">
-                            <h2>Enter your information</h2>
-
-                        </div>
-                        <div className="row">
-                            <hr />
-                        </div>
-                        <div className="form-group row">
-                            <label for="name" className="col-sm-6 col-form-label d-flex justify-content-center">Name: </label>
-                            <div className="col-sm-6">
-                                <input type="text" id="name" className="form-control" value={name} onChange={(e) => { setName(e.target.value) }} />
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <label for="email" className="col-sm-6 col-form-label d-flex justify-content-center">Email: </label>
-                            <div className="col-sm-6">
-                                <input type="text" id="email" className="form-control" value={email} onChange={(e) => { setEmail(e.target.value) }} />
-                            </div>
-                        </div>
-                        <div className="row d-flex justify-content-center">
-                            <button className="btn btn-outline-secondary" onClick={() => { sendInfo("request") }}>Send Information</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="features" className="offset">
-
-                <div className="jumbotron">
-                    <div className="narrow text-center">
-                        <div className="col-12">
-                            <h1>Do you have a watch to donate?</h1>
-                            <div className="card p-4" style={{ border: "0px", backgroundColor: "#e9ecef" }}>
-                                <div className="row d-flex justify-content-center">
-                                    <h2>Enter your information</h2>
-
+                    <div className="jumbotron">
+                        <div className="narrow text-center">
+                            <div className="col-12">
+                                <h1>Resources</h1>
+                                <hr />
+                                <div className="row">
+                                    <div className="col-sm-12">
+                                        <h4>Instructional Video</h4>
+                                    </div>
                                 </div>
                                 <div className="row">
-                                    <hr />
-                                </div>
-                                <div className="form-group row">
-                                    <label for="name2" className="col-sm-6 col-form-label d-flex justify-content-center">Name: </label>
-                                    <div className="col-sm-6">
-                                        <input type="text" id="name2" className="form-control" value={name2} onChange={(e) => { setName2(e.target.value) }} />
+                                    <div className="col-sm-12">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/JIRWLObizfQ" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                     </div>
                                 </div>
-                                <div className="form-group row">
-                                    <label for="email2" className="col-sm-6 col-form-label d-flex justify-content-center">Email: </label>
-                                    <div className="col-sm-6">
-                                        <input type="text" id="email2" className="form-control" value={email2} onChange={(e) => { setEmail2(e.target.value) }} />
+
+                                <div className="row">
+                                    <div className="col-sm-12">
+                                        <p>Search for cardiac electroncologist: <a href="https://www.hrsonline.org/find-a-specialist">https://www.hrsonline.org/find-a-specialist</a></p>
+                                        <p>WPW Facebook Page: <a href="https://www.facebook.com/groups/place4comfortwpw/">https://www.facebook.com/groups/place4comfortwpw/</a></p>
+                                        <p>For free heart checks, check local hospitals or <a href="https://www.anthonybates.org/">https://www.anthonybates.org/</a></p>
                                     </div>
-                                </div>
-                                <div className="row d-flex justify-content-center">
-                                    <button className="btn btn-outline-secondary" onClick={() => { sendInfo("send") }}>Send Information</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div >
+                <div id="course" className="pb-5">
+                    <div className="col-12 narrow text-center">
+                        <h1>Do you need a Heart Monitor</h1>
+                        <div className="card p-4" style={{ border: "0px" }}>
+                            <div className="row d-flex justify-content-center">
+                                <h2>Enter your information</h2>
+
+                            </div>
+                            <div className="row">
+                                <hr />
+                            </div>
+                            <div className="form-group row">
+                                <label htmlFor="name" className="col-sm-6 col-form-label d-flex justify-content-center">Name: </label>
+                                <div className="col-sm-6">
+                                    <input type="text" id="name" className="form-control" value={name} onChange={(e) => { setName(e.target.value) }} />
+                                </div>
+                            </div>
+                            <div className="form-group row">
+                                <label htmlFor="email" className="col-sm-6 col-form-label d-flex justify-content-center">Email: </label>
+                                <div className="col-sm-6">
+                                    <input type="text" id="email" className="form-control" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                                </div>
+                            </div>
+                            <div className="row d-flex justify-content-center">
+                                <button className="btn btn-outline-secondary" onClick={() => { sendInfo("request") }}>Send Information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="features" className="">
+
+                    <div className="jumbotron">
+                        <div className="narrow text-center">
+                            <div className="col-12">
+                                <h1>Do you have a watch to donate?</h1>
+                                <div className="card p-4" style={{ border: "0px", backgroundColor: "#e9ecef" }}>
+                                    <div className="row d-flex justify-content-center">
+                                        <h2>Enter your information</h2>
+
+                                    </div>
+                                    <div className="row">
+                                        <hr />
+                                    </div>
+                                    <div className="form-group row">
+                                        <label htmlFor="name2" className="col-sm-6 col-form-label d-flex justify-content-center">Name: </label>
+                                        <div className="col-sm-6">
+                                            <input type="text" id="name2" className="form-control" value={name2} onChange={(e) => { setName2(e.target.value) }} />
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label htmlFor="email2" className="col-sm-6 col-form-label d-flex justify-content-center">Email: </label>
+                                        <div className="col-sm-6">
+                                            <input type="text" id="email2" className="form-control" value={email2} onChange={(e) => { setEmail2(e.target.value) }} />
+                                        </div>
+                                    </div>
+                                    <div className="row d-flex justify-content-center">
+                                        <button className="btn btn-outline-secondary" onClick={() => { sendInfo("send") }}>Send Information</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div >
+        </div>
     );
 }
 

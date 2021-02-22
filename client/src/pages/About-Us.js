@@ -1,10 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
 const AboutUs = () => {
+
+    useEffect(() => {
+        //window.scrollTo(0, 500);
+        //console.log(window.pageYOffset)
+
+        let initStr = window.location.hash;
+        let newStr = initStr.substring(2);
+        let idx = newStr.indexOf("#");
+        if (idx === -1) {
+            window.scrollTo(0, 0);
+        }
+        else {
+            let scrollTo = newStr.substring(idx + 1);
+            let pxidx = getComputedStyle(document.querySelector('.navbar')).height.indexOf('p');
+            let number = parseFloat(getComputedStyle(document.querySelector('.navbar')).height.substring(0, pxidx));
+            switch (scrollTo) {
+                case "course":
+                    window.scroll(0, (document.getElementById('course').offsetTop - number));
+                    break;
+                case "features":
+                    window.scroll(0, (document.getElementById("features").offsetTop - number));
+                    break;
+                default:
+                    window.scrollTo(0, 0);
+                    break;
+            }
+        }
+    }, [])
+
     return (
         <div>
-            <div className="offset">
+            <div className="">
                 <div id="Landing">
                     <div className="landing">
                         <div className="home-wrap">
@@ -28,7 +57,7 @@ const AboutUs = () => {
                     </div>
                 </div>
             </div>
-            <div id="course" className="offset pb-5">
+            <div id="course" className="pb-5">
                 <div className="col-12 narrow text-center">
                     <h1>What We Do</h1>
                     <p className="lead">
@@ -37,7 +66,7 @@ const AboutUs = () => {
                 </div>
             </div>
 
-            <div id="features" className="offset">
+            <div id="features" className="">
 
                 <div className="jumbotron">
                     <div className="narrow text-center">
@@ -46,7 +75,7 @@ const AboutUs = () => {
                             <p className="lead">Help us connect you to a family that desperately needs a heart monitor for
                             Wolff-Parkinson-White Syndrome.
 						</p>
-                            <Link to="/wpw"><button className="btn btn-secondary btn-md" target="_blank">Let's Connect</button></Link>
+                            <Link to="/wpw#features"><button className="btn btn-secondary btn-md" target="_blank">Let's Connect</button></Link>
                         </div>
                     </div>
                 </div>

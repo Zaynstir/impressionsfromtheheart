@@ -54,7 +54,7 @@ body {
   width: 100%;
   max-width: 100%;
   position: absolute;
-  top: 18%;
+  top: 25vh;
   z-index: 1;
   color: white;
   text-transform: uppercase;
@@ -193,7 +193,6 @@ footer {
   background-color: #40474e;
   color: white;
   padding: 2rem 0 2rem;
-  margin-top: 1rem;
 }
 footer img {
   height: 3rem;

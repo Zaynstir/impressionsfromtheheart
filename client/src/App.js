@@ -1,5 +1,5 @@
 import react, { useState, useEffect } from 'react';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route, useHistory } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
 
@@ -21,6 +21,9 @@ import ContactUs from './pages/Contact-Us';
 
 function App() {
 
+  if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
   return (
     <Router>
       <div>

@@ -1,11 +1,51 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../style.css'
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+
+
+
+    useEffect(() => {
+        //window.scrollTo(0, 500);
+        //console.log(window.pageYOffset)
+
+        let initStr = window.location.hash;
+        let newStr = initStr.substring(2);
+        let idx = newStr.indexOf("#");
+        if (idx === -1) {
+            window.scrollTo(0, 0);
+        }
+        else {
+            let scrollTo = newStr.substring(idx + 1);
+            let pxidx = getComputedStyle(document.querySelector('.navbar')).height.indexOf('p');
+            let number = parseFloat(getComputedStyle(document.querySelector('.navbar')).height.substring(0, pxidx));
+            switch (scrollTo) {
+                case "course":
+                    window.scroll(0, (document.getElementById('course').offsetTop - number));
+                    break;
+                case "features":
+                    window.scroll(0, (document.getElementById("features").offsetTop - number));
+                    break;
+                case "resources":
+                    window.scroll(0, (document.getElementById("resources").offsetTop - number));
+                    break;
+                default:
+                    window.scrollTo(0, 0);
+                    break;
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+
+        console.log(window.pageYOffset)
+    }, [window.pageYOffset])
+
+
     return (
-        <div>
-            <div className="offset">
+        <div className="offset">
+            <div>
                 <div id="Landing">
                     <div className="landing">
                         <div className="home-wrap">
@@ -23,16 +63,16 @@ const Home = () => {
                 </div>
             </div>
 
-            <div id="course" className="offset">
+            <div id="course" className="">
                 <div className="col-12 narrow text-center">
                     <h1>Wolff-Parkinson-White Syndrome</h1>
                     <p className="lead">Click the button to learn about Wolff-Parkinson-White Syndrome.
 				</p>
-                    <Link to="/wpw"><button className="btn btn-secondary btn-md" href="/wpw" target="_blank">Let's Learn</button></Link>
+                    <Link to="/wpw#course"><button className="btn btn-secondary btn-md" href="/wpw" target="_blank">Let's Learn</button></Link>
                 </div>
             </div>
 
-            <div id="features" className="offset">
+            <div id="features" className="">
 
                 <div className="jumbotron">
                     <div className="narrow text-center">
@@ -41,13 +81,13 @@ const Home = () => {
                             <p className="lead">Help us connect you to a family that desperately needs a heart monitor for
                             Wolff-Parkinson-White Syndrome.
 						</p>
-                            <Link to="/wpw"><button className="btn btn-secondary btn-md" href="/wpw" target="_blank">Let's Connect</button></Link>
+                            <Link to="/wpw#features"><button className="btn btn-secondary btn-md" href="/wpw" target="_blank">Let's Connect</button></Link>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="resources" className="offset">
+            <div id="resources" className="">
 
                 <div className="fixed-background">
 
@@ -79,12 +119,6 @@ const Home = () => {
                         </div>
                         <div className="col-12">
                             <Link to="/store"><button className="btn btn-secondary btn-md" target="_blank">Go To Store</button></Link>
-                        </div>
-                    </div>
-
-                    <div className="fixed-wrap">
-                        <div className="fixed">
-
                         </div>
                     </div>
 

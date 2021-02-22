@@ -1,8 +1,13 @@
-import react from 'react';
+import react, { useEffect } from 'react';
 import Inventory from '../components/vendor/Inventory';
 
 
 const Store = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <div className="offset">
             <div className="row pb-2">

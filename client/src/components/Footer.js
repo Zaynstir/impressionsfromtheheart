@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
-        <div id="contact" className="offset">
+        <div id="contact" className="">
 
             <footer className="footer">
                 <div className="">
@@ -37,10 +37,10 @@ const Footer = () => {
                                         <Link className="footer-link" to="/wpw"><label>WPW Info</label></Link>
                                     </div>
                                     <div className="row">
-                                        <Link className="footer-link" to="/wpw"><label>Monitor Donation</label></Link>
+                                        <Link className="footer-link" to="/wpw#features"><label>Monitor Donation</label></Link>
                                     </div>
                                     <div className="row">
-                                        <Link className="footer-link" to="/wpw"><label>Monitor Request</label></Link>
+                                        <Link className="footer-link" to="/wpw#course"><label>Monitor Request</label></Link>
                                     </div>
                                 </div>
                                 <div className="col-md-4">
