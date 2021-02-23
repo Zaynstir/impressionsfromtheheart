@@ -3,6 +3,8 @@ const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
 const bodyParser = require("body-parser")
+const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 const { Client, Pool } = require('pg');
 
 const app = express();
@@ -10,8 +12,10 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: 'http://localhost:3000',
+    credentials: true
 }));
+app.use(cookieParser());
 
 /*const client = new Client({
     connectionString: process.env.DB_URI,
@@ -26,17 +30,151 @@ const pool = new Pool({
     }
 })
 
+//Temp Users
+const users = [
+    {
+        username: "john",
+        password: "pass",
+        role: "admin"
+    },
+    {
+        username: "bob",
+        password: "user",
+        role: "user"
+    }
+]
+
+
+
+const accessTokenSecret = process.env.jwtToken;
+const refreshTokens = [];
+
 //Body Parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/admin', (req, res) => {
-    //login to view of customer data
-    // - orders, wpwrequests, wpwdonations
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    //update to pull from Database instead of json array
+    const user = users.find(u => { return u.username === username && u.password === password });
+
+    if (user) {
+        const accessToken = jwt.sign({ username: user.username, role: user.role }, accessTokenSecret, { expiresIn: '20m' });
+        //const refreshToken = jwt.sign({ username: user.username, role: user.role }, refreshTokenSecret);
+
+        //refreshTokens.push(refreshToken);
+        res.cookie("token", accessToken, {
+            httpOnly: true
+        });
+        res.json({
+            status: 1
+            //,
+            //refreshToken
+        })
+    }
+    else {
+        res.json({ "status": -1 })
+    }
+})
+
+app.post('/token', (req, res) => {
+    const { token } = req.body;
+
+    if (!token) {
+        return res.sendStatus(401);
+    }
+
+    if (!refreshTokens.includes(token)) {
+        return res.sendStatus(403);
+    }
+
+    jwt.verify(token, refreshTokenSecret, (err, user) => {
+        if (err) {
+            return res.sendStatus(403);
+        }
+
+        const accessToken = jwt.sign({ username: user.username, role: user.role }, accessTokenSecret, { expiresIn: '20m' });
+
+        res.json({
+            accessToken
+        })
+    })
 });
 
-app.get('/admin/orders', (req, res) => {
+const authenticateJWT = (req, res, next) => {
+    if (Object.keys(req.cookies).length > 0) {
+        const auth = req.cookies.hasOwnProperty("token");
 
+        if (auth) {
+            //const token = authHeader.split(' ')[1];
+            const token = req.cookies.token;
+            jwt.verify(token, accessTokenSecret, (err, user) => {
+                if (err) {
+                    //console.log(err);
+                    return res.sendStatus(403);
+                }
+
+                req.user = user;
+                next();
+            })
+        }
+        else {
+            res.sendStatus(401);
+        }
+
+    }
+    else {
+        res.sendStatus(401);
+    }
+}
+
+app.post('/logout', (req, res) => {
+    //console.log(req.cookies);
+    //const { token } = req.body;
+    //refreshTokens = refreshTokens.filter(token => t !== token);
+
+    res.send("Logout Successful");
+})
+
+app.get('/admin', authenticateJWT, (req, res) => {
+
+    //console.log(req.cookies);
+    //login to view of customer data
+    // - orders, wpwrequests, wpwdonations
+    //console.log(req.user);
+    const { role } = req.user;
+
+    if (role != 'admin') {
+        return res.sendStatus(403);
+    }
+    let ray = {
+        status: 1
+    }
+    res.json(ray);
+});
+
+app.get('/admin/orders', authenticateJWT, (req, res) => {
+    const { role } = req.user;
+
+    if (role != 'admin') {
+        return res.sendStatus(403);
+    }
+    let ray = {
+        status: -1,
+        result: {}
+    };
+    pool.query("select * from public.orders")
+        .then(response => {
+            ray.status = 1;
+            for (let i = 0; i < response.rows.length; i++) {
+                ray.result = response.rows;
+            }
+            res.json(ray);
+        })
+        .catch(err => {
+            console.error(err);
+            res.json(ray);
+        })
 })
 
 app.get('/admin/wpwrequests', (req, res) => {

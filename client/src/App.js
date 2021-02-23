@@ -17,6 +17,8 @@ import Header from './components/Header';
 import WPW from './pages/WPW';
 import AboutUs from './pages/About-Us';
 import ContactUs from './pages/Contact-Us';
+import Login from './pages/Login';
+import Admin from './pages/Admin';
 
 
 function App() {
@@ -39,9 +41,11 @@ function App() {
                 <Route path="/store" exact component={Store} />
                 <Route path="/store/item/:id" component={ItemDetails} />
                 <Route path="/cart" exact component={Cart} />
-                <Route path="/EditItem" exact component={EditItem} />
-                <Route path="/EditItem/:id" component={EditItem} />
-                <Route path="/Checkout" component={Checkout} />
+                <Route path="/edititem" exact component={EditItem} />
+                <Route path="/edititem/:id" component={EditItem} />
+                <Route path="/checkout" component={Checkout} />
+                <Route path="/login" component={Login} />
+                <Route path="/admin" component={Admin} />
                 <Route path="/*" component={FaultyPage} />
               </Switch>
             </UserCartProvider>
