@@ -57,7 +57,7 @@ const Login = (props) => {
                                 <div className="form-group row">
                                     <label htmlFor="password" className="col-sm-6 col-form-label card-text">Password:</label>
                                     <div className="col-sm-6">
-                                        <input type="text" className="form-control" id="password" value={user.password} onChange={updateValue} />
+                                        <input type="password" className="form-control" id="password" value={user.password} onChange={updateValue} />
                                     </div>
                                 </div>
                             </div>

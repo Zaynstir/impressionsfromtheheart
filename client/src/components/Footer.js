@@ -23,32 +23,48 @@ const Footer = () => {
                             <div className="row">
                                 <div className="col-md-4">
                                     <div className="row">
-                                        <Link className="footer-link" to="/"><label>Home</label></Link>
+                                        <div className="col d-flex justify-content-center pb-1">
+                                            <div className="footer-link" onClick={(e) => { window.location.replace('#/') }}>Home</div>
+                                        </div>
                                     </div>
                                     <div className="row">
-                                        <Link className="footer-link" to="/about-us"><label>About Us</label></Link>
+                                        <div className="col d-flex justify-content-center pb-1">
+                                            <div className="footer-link" onClick={(e) => { window.location.replace('#/about-us') }}>About Us</div>
+                                        </div>
                                     </div>
                                     <div className="row">
-                                        <Link className="footer-link" to="/contact-us"><label>Contact Us</label></Link>
-                                    </div>
-                                </div>
-                                <div className="col-md-4">
-                                    <div className="row">
-                                        <Link className="footer-link" to="/wpw"><label>WPW Info</label></Link>
-                                    </div>
-                                    <div className="row">
-                                        <Link className="footer-link" to="/wpw#features"><label>Monitor Donation</label></Link>
-                                    </div>
-                                    <div className="row">
-                                        <Link className="footer-link" to="/wpw#course"><label>Monitor Request</label></Link>
+                                        <div className="col d-flex justify-content-center pb-1">
+                                            <div className="footer-link" onClick={(e) => { window.location.replace('#/contact-us') }}>Contact Us</div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="col-md-4">
                                     <div className="row">
-                                        <Link className="footer-link" to="/store"><label>Accessory Store</label></Link>
+                                        <div className="col d-flex justify-content-center pb-1">
+                                            <div className="footer-link" onClick={(e) => { window.location.replace('#/wpw') }}>WPW Info</div>
+                                        </div>
                                     </div>
                                     <div className="row">
-                                        <Link className="footer-link" to="/sitemap"><label>Site Map</label></Link>
+                                        <div className="col d-flex justify-content-center pb-1">
+                                            <div className="footer-link" onClick={(e) => { window.location.assign('#/wpw#features') }}>Monitor Donation</div>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col d-flex justify-content-center pb-1">
+                                            <div className="footer-link" onClick={(e) => { window.location.replace('#/wpw#course') }}>Monitor Request</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-4">
+                                    <div className="row">
+                                        <div className="col d-flex justify-content-center pb-1">
+                                            <div className="footer-link" onClick={(e) => { window.location.replace('#/store') }}>Accessory Store</div>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col d-flex justify-content-center pb-1">
+                                            <div className="footer-link" onClick={(e) => { window.location.replace('#/sitemap') }}>Site Map</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

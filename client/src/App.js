@@ -19,6 +19,7 @@ import AboutUs from './pages/About-Us';
 import ContactUs from './pages/Contact-Us';
 import Login from './pages/Login';
 import Admin from './pages/Admin';
+import SiteMap from './pages/SiteMap';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
                 <Route path="/checkout" component={Checkout} />
                 <Route path="/login" component={Login} />
                 <Route path="/admin" component={Admin} />
+                <Route path="/sitemap" component={SiteMap} />
                 <Route path="/*" component={FaultyPage} />
               </Switch>
             </UserCartProvider>

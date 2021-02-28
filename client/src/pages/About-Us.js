@@ -33,7 +33,7 @@ const AboutUs = () => {
 
     return (
         <div>
-            <div className="">
+            <div className="offset">
                 <div id="Landing">
                     <div className="landing">
                         <div className="home-wrap">

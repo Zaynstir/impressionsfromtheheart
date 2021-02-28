@@ -16,7 +16,7 @@ const Orders = (props) => {
     });
 
     useEffect(() => {
-        //$('#ordertable').DataTable();
+
         fetch("http://localhost:5000/admin/orders", {
             method: "get",
             credentials: "include",
@@ -31,6 +31,7 @@ const Orders = (props) => {
                 if (data.status == 1) {
                     console.log(data);
                     setTableData(data.result);
+                    $('#ordertable').DataTable();
                 }
                 else {
                     window.location.replace("#/login")
@@ -97,6 +98,7 @@ const Orders = (props) => {
                 </div>
             </div>
         )
+
         return ray;
 
     }

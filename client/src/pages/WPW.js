@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery'
+import Swal from 'sweetalert2';
 
 const WPW = () => {
 
@@ -8,10 +9,17 @@ const WPW = () => {
     const [name2, setName2] = useState('');
     const [email2, setEmail2] = useState('');
 
-    useEffect(() => {
-        //window.scrollTo(0, 500);
-        //console.log(window.pageYOffset)
+    const [wpwr, setwpwr] = useState({
+        name: "",
+        email: ""
+    })
 
+    const [wpwd, setwpwd] = useState({
+        name: "",
+        email: ""
+    })
+
+    useEffect(() => {
         let initStr = window.location.hash;
         let newStr = initStr.substring(2);
         let idx = newStr.indexOf("#");
@@ -39,78 +47,81 @@ const WPW = () => {
         }
     }, [])
 
-    const sendInfo = action => {
-        let n = "";
-        let e = "";
-        let URL = "";
-        let entry1 = "";
-        let entry2 = "";
-        if (action == "request") {
-            n = name;
-            e = email;
-            URL = "https://docs.google.com/forms/d/1NVfxGk1PSGt6LOdI-_P-uu9B4yRygg6aOeTpL0urdDY/formResponse";
-            entry1 = "entry.1059276653";
-            entry2 = "entry.523655765";
-        } else if (action == "send") {
-            n = name2;
-            e = email2;
-            URL = "https://docs.google.com/forms/d/1iocjNfVPzKmP9m_a63MAUOXa24kmXntwLq4mUnfFRY4/formResponse";
-            entry1 = "entry.2092079629";
-            entry2 = "entry.569044853";
-        } else {
-            alert("Error on submit");
-            return;
+    window.onhashchange = function () {
+        window.location.reload();
+    }
+
+
+
+    const updateValue = (e, type) => {
+        if (type == "wpwrequest") {
+            setwpwr({ ...wpwr, [e.target.id]: e.target.value })
         }
-        if (n == "" || e == "") {
-            alert('Error on submission. One of your values are empty. Please provide correct details.');
-            return;
-        } else {
-            $.ajax({
-                url: URL,
-                data: { entry1: n, entry2: e },
-                type: 'GET',
-                dataType: 'xml',
-                statusCode: {
-                    0: function (data) {
-                        console.log("Okay-ish");
-                        window.confirm("Thank you for request, we will get back to you shortly.");
-                    },
-                    200: function (data) {
-                        console.log("Successful");
-                        window.confirm("Thank you for request, we will get back to you shortly.");
-                    },
-                    403: function (data) {
-                        console.log("Error");
-                        window.confirm("Thank you for request, we however encountered an error. Try again, or email us directly at 'Email@Address.com'");
-                    }
+        else if (type == "wpwdonation") {
+            setwpwr({ ...wpwd, [e.target.id]: e.target.value })
+        }
+    }
+
+    const sendWPWRequests = () => {
+        fetch('http://localhost:5000/wpw/insertRequest', {
+            method: 'post',
+            body: JSON.stringify({
+                name: wpwr.name,
+                email: wpwr.email
+            }),
+            headers: { "Content-Type": "application/json" }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.flag == -1) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'There was an error with the request.',
+                        showCloseButton: true
+                    })
+                }
+                else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Submitted',
+                        text: 'Your request has been submitted.',
+                        showCloseButton: true
+                    })
                 }
             })
-        }
-        /*
-                $.ajax({
-                    url: 'https://docs.google.com/forms/d/e/1FAIpQLScsqo5PDWpMlFHE1F-F6f-uwx_GBA43Vtjy0yAyXlGQUuqtNQ/formResponse',
-                    data: { "entry.363397345": form["name"], "entry.160108116": form["email"], 'entry.1951018395': form["comment"], 'entry.563480874': JSON.stringify(cart), 'entry.2141173274': id },
-                    type: 'GET',
-                    dataType: 'xml',
-                    statusCode: {
-                        0: function (data) {
-                            console.log("send meh");
-                            if (window.confirm("Order has been submitted. Your order ID is " + id + " If you do not hear a response withing a few days, please send an email at 'Enter Email@email.email' with your order ID.")) {
-                                history.push('/store');
-                            }
-                        },
-                        200: function (data) {
-                            console.log("sent successfully");
-                            if (window.confirm("Order has been submitted. Your order ID is " + id + " If you do not hear a response withing a few days, please send an email at 'Enter Email@email.email' with your order ID.")) {
-                                history.push('/store');
-                            }
-                        },
-                        403: function (data) {
-                            console.log("Problem");
-                        }
-                    }
-                })
-                */
+            .catch(err => console.error(err));
+    }
+
+    const sendWPWDonations = () => {
+        fetch('http://localhost:5000/wpw/insertDonation', {
+            method: 'post',
+            body: JSON.stringify({
+                name: wpwd.name,
+                email: wpwd.email
+            }),
+            headers: { "Content-Type": "application/json" }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.flag == -1) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'There was an error with the request.',
+                        showCloseButton: true
+                    })
+                }
+                else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Submitted',
+                        text: 'Your information has been submitted.',
+                        showCloseButton: true
+                    })
+                }
+            })
+            .catch(err => console.error(err));
     }
 
     return (
@@ -181,17 +192,17 @@ const WPW = () => {
                             <div className="form-group row">
                                 <label htmlFor="name" className="col-sm-6 col-form-label d-flex justify-content-center">Name: </label>
                                 <div className="col-sm-6">
-                                    <input type="text" id="name" className="form-control" value={name} onChange={(e) => { setName(e.target.value) }} />
+                                    <input type="text" id="name" className="form-control" value={name} onChange={(e) => { updateValue(e, "wpwrequest") }} />
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label htmlFor="email" className="col-sm-6 col-form-label d-flex justify-content-center">Email: </label>
                                 <div className="col-sm-6">
-                                    <input type="text" id="email" className="form-control" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                                    <input type="text" id="email" className="form-control" value={email} onChange={(e) => { updateValue(e, "wpwrequest") }} />
                                 </div>
                             </div>
                             <div className="row d-flex justify-content-center">
-                                <button className="btn btn-outline-secondary" onClick={() => { sendInfo("request") }}>Send Information</button>
+                                <button className="btn btn-outline-secondary" onClick={() => { sendWPWRequests() }}>Send Information</button>
                             </div>
                         </div>
                     </div>
@@ -212,19 +223,19 @@ const WPW = () => {
                                         <hr />
                                     </div>
                                     <div className="form-group row">
-                                        <label htmlFor="name2" className="col-sm-6 col-form-label d-flex justify-content-center">Name: </label>
+                                        <label htmlFor="name" className="col-sm-6 col-form-label d-flex justify-content-center">Name: </label>
                                         <div className="col-sm-6">
-                                            <input type="text" id="name2" className="form-control" value={name2} onChange={(e) => { setName2(e.target.value) }} />
+                                            <input type="text" id="name" className="form-control" value={wpwd.name} onChange={(e) => { updateValue(e, "wpwdonation") }} />
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label htmlFor="email2" className="col-sm-6 col-form-label d-flex justify-content-center">Email: </label>
+                                        <label htmlFor="email" className="col-sm-6 col-form-label d-flex justify-content-center">Email: </label>
                                         <div className="col-sm-6">
-                                            <input type="text" id="email2" className="form-control" value={email2} onChange={(e) => { setEmail2(e.target.value) }} />
+                                            <input type="text" id="email" className="form-control" value={wpwd.email} onChange={(e) => { updateValue(e, "wpwdonation") }} />
                                         </div>
                                     </div>
                                     <div className="row d-flex justify-content-center">
-                                        <button className="btn btn-outline-secondary" onClick={() => { sendInfo("send") }}>Send Information</button>
+                                        <button className="btn btn-outline-secondary" onClick={() => { sendWPWDonations() }}>Send Information</button>
                                     </div>
                                 </div>
                             </div>

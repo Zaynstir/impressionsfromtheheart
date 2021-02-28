@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Orders from '../components/admin/Orders';
+import WPWDonations from '../components/admin/WPWDonations';
+import WPWRequests from '../components/admin/WPWRequests';
 
 const Admin = () => {
 
@@ -60,8 +62,8 @@ const Admin = () => {
                 <div className="col">
                     {
                         view === "Orders" ? <Orders /> : (
-                            view === "WPW Requests" ? <div>wpw</div> :
-                                view === "WPW Donations" ? <div>wpw2</div> : <div>DNE</div>
+                            view === "WPW Requests" ? <WPWRequests /> :
+                                view === "WPW Donations" ? <WPWDonations /> : <div>DNE</div>
                         )
                     }
                 </div>

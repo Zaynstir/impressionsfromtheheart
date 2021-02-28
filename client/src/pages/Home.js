@@ -37,11 +37,6 @@ const Home = () => {
         }
     }, [])
 
-    useEffect(() => {
-
-        console.log(window.pageYOffset)
-    }, [window.pageYOffset])
-
 
     return (
         <div className="offset">
