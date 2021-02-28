@@ -69,7 +69,7 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'codingspasms@gmail.com',
-        pass: 'Inap4Code!'
+        pass: process.env.emailPass
     }
 });
 
